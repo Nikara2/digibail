@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tableau de bord Bailleur – Digibail</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/bailleur.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <i class="fa-solid fa-building-columns"></i>
+          <span>Digibail</span>
+        </div>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <h3>Mon Espace/bailleur</h3>
+          <a href="#" class="nav-link active">
+            <i class="fa-solid fa-home"></i>
+            <span>Tableau de bord</span>
+          </a>
+          <a href="mes-biens.html" class="nav-link">
+            <i class="fa-solid fa-building"></i>
+            <span>Mes biens</span>
+          </a>
+          <a href="contrats.html" class="nav-link">
+            <i class="fa-solid fa-file-contract"></i>
+            <span>Contrats</span>
+          </a>
+          <a href="loyers.html" class="nav-link">
+            <i class="fa-solid fa-credit-card"></i>
+            <span>Loyers</span>
+          </a>
+          <a href="/" class="nav-link">
+            <i class="fa-solid fa-chart-line"></i>
+            <span>Rapports</span>
+          </a>
+        </div>
+        
+        <div class="nav-section">
+          <h3>Gestion</h3>
+          <a href="ajouter-bien.html" class="nav-link">
+            <i class="fa-solid fa-plus"></i>
+            <span>Ajouter un bien</span>
+          </a>
+          <a href="nouveau-client.html" class="nav-link">
+            <i class="fa-solid fa-user-plus"></i>
+            <span>Nouveau locataire</span>
+          </a>
+          <a href="#" class="nav-link">
+            <i class="fa-solid fa-headset"></i>
+            <span>Support</span>
+          </a>
+        </div>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <div class="user-info">
+          <div class="user-avatar">
+            <i class="fa-solid fa-user-tie"></i>
+          </div>
+          <div class="user-details">
+            <span class="user-name">Marie Martin</span>
+            <span class="user-role">Bailleur</span>
+          </div>
+        </div>
+        <a href="../login.html" class="logout-btn">
+          <i class="fa-solid fa-sign-out-alt"></i>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="dashboard-header">
+        <div class="header-left">
+          <h1>Tableau de bord</h1>
+          <p>Bienvenue, Marie Martin</p>
+        </div>
+        <div class="header-right">
+          <button class="btn btn-primary" onclick="generateReport()">
+            <i class="fa-solid fa-file-pdf"></i>
+            Générer rapport
+          </button>
+          <div class="notifications">
+            <i class="fa-solid fa-bell"></i>
+            <span class="notification-badge">3</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Alerts Section -->
+      <section class="alerts-section">
+        <div class="alert alert-warning">
+          <i class="fa-solid fa-exclamation-triangle"></i>
+          <div class="alert-content">
+            <h4>Loyer en retard</h4>
+            <p>Le loyer de l'appartement T3 - Rue de la Paix, Ouagadougou n'a pas été payé (Jean Dupont)</p>
+          </div>
+          <button class="btn btn-primary btn-sm">Envoyer relance</button>
+        </div>
+        
+        <div class="alert alert-info">
+          <i class="fa-solid fa-info-circle"></i>
+          <div class="alert-content">
+            <h4>Nouveau paiement reçu</h4>
+            <p>Paiement de 50000 Fcfa reçu pour l'appartement T2 - Avenue Kwame Nkrumah, Ouagadougou</p>
+          </div>
+          <button class="btn btn-outline btn-sm">Voir détails</button>
+        </div>
+        
+        <div class="alert alert-success">
+          <i class="fa-solid fa-check-circle"></i>
+          <div class="alert-content">
+            <h4>Contrat renouvelé</h4>
+            <p>Le contrat de l'appartement T3 a été automatiquement renouvelé</p>
+          </div>
+          <button class="btn btn-outline btn-sm">Voir contrat</button>
+        </div>
+      </section>
+
+      <!-- Stats Cards -->
+      <section class="stats-section">
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fa-solid fa-building"></i>
+          </div>
+          <div class="stat-content">
+            <h3>5</h3>
+            <p>Biens loués</p>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fa-solid fa-file-contract"></i>
+          </div>
+          <div class="stat-content">
+            <h3>5</h3>
+            <p>Contrats actifs</p>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fa-solid fa-euro-sign"></i>
+          </div>
+          <div class="stat-content">
+            <h3>200 000 Fcfa</h3>
+            <p>Loyers ce mois</p>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fa-solid fa-chart-line"></i>
+          </div>
+          <div class="stat-content">
+            <h3>95%</h3>
+            <p>Taux de recouvrement</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Main Dashboard Content -->
+      <div class="dashboard-grid">
+        <!-- Properties List -->
+        <section class="dashboard-card">
+          <div class="card-header">
+            <h2>Mes biens</h2>
+            <a href="#" class="card-link">Voir tout</a>
+          </div>
+          <div class="card-content">
+            <div class="property-item">
+              <div class="property-info">
+                <h4>Appartement T3 - Rue de la Paix, Ouagadougou</h4>
+                <p>Locataire : Jean Dupont</p>
+                <span class="property-status occupied">Occupé</span>
+              </div>
+              <div class="property-actions">
+                <span class="rent-amount">50000 Fcfa/mois</span>
+                <button class="btn btn-outline btn-sm">Gérer</button>
+              </div>
+            </div>
+            
+            <div class="property-item">
+              <div class="property-info">
+                <h4>Appartement T2 - Avenue Kwame Nkrumah, Ouagadougou</h4>
+                <p>Locataire : Sophie Bernard</p>
+                <span class="property-status occupied">Occupé</span>
+              </div>
+              <div class="property-actions">
+                <span class="rent-amount">40000 Fcfa/mois</span>
+                <button class="btn btn-outline btn-sm">Gérer</button>
+              </div>
+            </div>
+            
+            <div class="property-item">
+              <div class="property-info">
+                <h4>Studio - Boulevard Central, Ouagadougou</h4>
+                <p>Locataire : Pierre Durand</p>
+                <span class="property-status occupied">Occupé</span>
+              </div>
+              <div class="property-actions">
+                <span class="rent-amount">30000 Fcfa/mois</span>
+                <button class="btn btn-outline btn-sm">Gérer</button>
+              </div>
+            </div>
+            
+            <div class="property-item">
+              <div class="property-info">
+                <h4>Maison T4 - Rue du Parc, Bobo-Dioulasso</h4>
+                <p>Locataire : Lucie Moreau</p>
+                <span class="property-status occupied">Occupé</span>
+              </div>
+              <div class="property-actions">
+                <span class="rent-amount">75000 Fcfa/mois</span>
+                <button class="btn btn-outline btn-sm">Gérer</button>
+              </div>
+            </div>
+            
+            <div class="property-item">
+              <div class="property-info">
+                <h4>Appartement T2 - Place de la Nation, Ouagadougou</h4>
+                <p>Locataire : -</p>
+                <span class="property-status vacant">Libre</span>
+              </div>
+              <div class="property-actions">
+                <span class="rent-amount">45000 Fcfa/mois</span>
+                <button class="btn btn-primary btn-sm">Louer</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Recent Rentals -->
+        <section class="dashboard-card">
+          <div class="card-header">
+            <h2>Loyers récents</h2>
+            <a href="#" class="card-link">Voir tout</a>
+          </div>
+          <div class="card-content">
+            <div class="rental-item">
+              <div class="rental-info">
+                <h4>Appartement T2 - Avenue Kwame Nkrumah, Ouagadougou</h4>
+                <p>Sophie Bernard - 15 janvier 2024</p>
+                <span class="rental-status received">Reçu</span>
+              </div>
+              <div class="rental-amount">
+                <span class="amount">40000 Fcfa</span>
+                <i class="fa-solid fa-check-circle text-success"></i>
+              </div>
+            </div>
+            
+            <div class="rental-item">
+              <div class="rental-info">
+                <h4>Studio - Boulevard Central, Ouagadougou</h4>
+                <p>Pierre Durand - 10 janvier 2024</p>
+                <span class="rental-status received">Reçu</span>
+              </div>
+              <div class="rental-amount">
+                <span class="amount">30000 Fcfa</span>
+                <i class="fa-solid fa-check-circle text-success"></i>
+              </div>
+            </div>
+            
+            <div class="rental-item">
+              <div class="rental-info">
+                <h4>Maison T4 - Rue du Parc, Bobo-Dioulasso</h4>
+                <p>Lucie Moreau - 8 janvier 2024</p>
+                <span class="rental-status received">Reçu</span>
+              </div>
+              <div class="rental-amount">
+                <span class="amount">75000 Fcfa</span>
+                <i class="fa-solid fa-check-circle text-success"></i>
+              </div>
+            </div>
+            
+            <div class="rental-item overdue">
+              <div class="rental-info">
+                <h4>Appartement T3 - Rue de la Paix, Ouagadougou</h4>
+                <p>Jean Dupont - 5 janvier 2024</p>
+                <span class="rental-status overdue">En retard</span>
+              </div>
+              <div class="rental-amount">
+                <span class="amount">50000 Fcfa</span>
+                <button class="btn btn-primary btn-sm">Relancer</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Revenue Chart -->
+        <section class="dashboard-card full-width">
+          <div class="card-header">
+            <h2>Évolution des revenus</h2>
+            <div class="chart-controls">
+              <select class="chart-period">
+                <option value="6">6 derniers mois</option>
+                <option value="12" selected>12 derniers mois</option>
+                <option value="24">24 derniers mois</option>
+              </select>
+            </div>
+          </div>
+          <div class="card-content">
+            <canvas id="revenueChart" width="400" height="200"></canvas>
+          </div>
+        </section>
+
+        <!-- Quick Actions -->
+        <section class="dashboard-card">
+          <div class="card-header">
+            <h2>Actions rapides</h2>
+          </div>
+          <div class="card-content">
+            <div class="quick-action">
+              <div class="action-icon">
+                <i class="fa-solid fa-plus"></i>
+              </div>
+              <div class="action-content">
+                <h4>Ajouter un bien</h4>
+                <p>Enregistrer un nouveau bien à louer</p>
+              </div>
+              <button class="btn btn-primary btn-sm">Ajouter</button>
+            </div>
+            
+            <div class="quick-action">
+              <div class="action-icon">
+                <i class="fa-solid fa-file-contract"></i>
+              </div>
+              <div class="action-content">
+                <h4>Nouveau contrat</h4>
+                <p>Créer un contrat de location</p>
+              </div>
+              <button class="btn btn-primary btn-sm">Créer</button>
+            </div>
+            
+            <div class="quick-action">
+              <div class="action-icon">
+                <i class="fa-solid fa-chart-bar"></i>
+              </div>
+              <div class="action-content">
+                <h4>Rapport mensuel</h4>
+                <p>Générer le rapport de ce mois</p>
+              </div>
+              <button class="btn btn-primary btn-sm">Générer</button>
+            </div>
+            
+            <div class="quick-action">
+              <div class="action-icon">
+                <i class="fa-solid fa-headset"></i>
+              </div>
+              <div class="action-content">
+                <h4>Support</h4>
+                <p>Contacter l'assistance</p>
+              </div>
+              <button class="btn btn-outline btn-sm">Contacter</button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/dashboard.js"></script>
+  <script src="js/bailleur.js"></script>
+</body>
+</html> 

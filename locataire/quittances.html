@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quittances – Digibail</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/quittances.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <i class="fa-solid fa-building-columns"></i>
+          <span>Digibail</span>
+        </div>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <h3>Mon Espace/locataire</h3>
+          <a href="locataire.html" class="nav-link">
+            <i class="fa-solid fa-home"></i>
+            <span>Tableau de bord</span>
+          </a>
+          <a href="contrats.html" class="nav-link">
+            <i class="fa-solid fa-file-contract"></i>
+            <span>Mes contrats</span>
+          </a>
+          <a href="paiements.html" class="nav-link">
+            <i class="fa-solid fa-credit-card"></i>
+            <span>Paiements</span>
+          </a>
+          <a href="quittances.html" class="nav-link active">
+            <i class="fa-solid fa-receipt"></i>
+            <span>Quittances</span>
+          </a>
+        </div>
+        
+        <div class="nav-section">
+          <h3>Services</h3>
+          <a href="paiement.html" class="nav-link">
+            <i class="fa-solid fa-money-bill-transfer"></i>
+            <span>Payer mon loyer</span>
+          </a>
+          <a href="#" class="nav-link">
+            <i class="fa-solid fa-headset"></i>
+            <span>Support</span>
+          </a>
+        </div>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <div class="user-info">
+          <div class="user-avatar">
+            <i class="fa-solid fa-user"></i>
+          </div>
+          <div class="user-details">
+            <span class="user-name">Jean Dupont</span>
+            <span class="user-role">Locataire</span>
+          </div>
+        </div>
+        <a href="login.html" class="logout-btn">
+          <i class="fa-solid fa-sign-out-alt"></i>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="dashboard-header">
+        <div class="header-left">
+          <h1>Quittances</h1>
+          <p>Consultez et téléchargez vos quittances de loyer</p>
+        </div>
+        <div class="header-right">
+          <button class="btn btn-outline" onclick="exportAllReceipts()">
+            <i class="fa-solid fa-download"></i>
+            Exporter tout
+          </button>
+        </div>
+      </header>
+
+      <!-- Receipt Stats -->
+      <section class="receipt-stats">
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fa-solid fa-receipt"></i>
+          </div>
+          <div class="stat-content">
+            <h3>24</h3>
+            <p>Quittances disponibles</p>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon success">
+            <i class="fa-solid fa-check-circle"></i>
+          </div>
+          <div class="stat-content">
+            <h3>22</h3>
+            <p>Quittances téléchargées</p>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fa-solid fa-calendar"></i>
+          </div>
+          <div class="stat-content">
+            <h3>2024</h3>
+            <p>Année en cours</p>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fa-solid fa-euro-sign"></i>
+          </div>
+          <div class="stat-content">
+            <h3>19 680 €</h3>
+            <p>Total des loyers</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Filters and Search -->
+      <section class="filters-section">
+        <div class="filters-left">
+          <div class="search-box">
+            <i class="fa-solid fa-search"></i>
+            <input type="text" placeholder="Rechercher une quittance...">
+          </div>
+          <div class="filter-dropdown">
+            <select id="yearFilter">
+              <option value="">Toutes les années</option>
+              <option value="2024" selected>2024</option>
+              <option value="2023">2023</option>
+              <option value="2022">2022</option>
+            </select>
+          </div>
+          <div class="filter-dropdown">
+            <select id="monthFilter">
+              <option value="">Tous les mois</option>
+              <option value="1">Janvier</option>
+              <option value="2">Février</option>
+              <option value="3">Mars</option>
+              <option value="4">Avril</option>
+              <option value="5">Mai</option>
+              <option value="6">Juin</option>
+              <option value="7">Juillet</option>
+              <option value="8">Août</option>
+              <option value="9">Septembre</option>
+              <option value="10">Octobre</option>
+              <option value="11">Novembre</option>
+              <option value="12">Décembre</option>
+            </select>
+          </div>
+        </div>
+        <div class="filters-right">
+          <button class="btn btn-outline" onclick="generateAnnualReceipt()">
+            <i class="fa-solid fa-file-pdf"></i>
+            Quittance annuelle
+          </button>
+        </div>
+      </section>
+
+      <!-- Receipts Grid -->
+      <section class="receipts-section">
+        <div class="receipts-grid">
+          <!-- Receipt Card -->
+          <div class="receipt-card">
+            <div class="receipt-header">
+              <div class="receipt-icon">
+                <i class="fa-solid fa-receipt"></i>
+              </div>
+              <div class="receipt-status">
+                <span class="status-badge available">Disponible</span>
+              </div>
+            </div>
+            
+            <div class="receipt-content">
+              <h3>Quittance de loyer</h3>
+              <p class="receipt-period">Janvier 2024</p>
+              <div class="receipt-details">
+                <div class="detail-item">
+                  <span class="detail-label">Loyer :</span>
+                  <span class="detail-value">800 €</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">Charges :</span>
+                  <span class="detail-value">120 €</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">Total :</span>
+                  <span class="detail-value total">920 €</span>
+                </div>
+              </div>
+              <div class="receipt-info">
+                <p><i class="fa-solid fa-building"></i> Appartement T3 - Rue de la Paix</p>
+                <p><i class="fa-solid fa-user"></i> Bailleur : Marie Martin</p>
+              </div>
+            </div>
+            
+            <div class="receipt-actions">
+              <button class="btn btn-primary btn-sm" onclick="downloadReceipt('2024-01')">
+                <i class="fa-solid fa-download"></i>
+                Télécharger
+              </button>
+              <button class="btn btn-outline btn-sm" onclick="viewReceipt('2024-01')">
+                <i class="fa-solid fa-eye"></i>
+                Voir
+              </button>
+            </div>
+          </div>
+
+          <!-- Receipt Card -->
+          <div class="receipt-card">
+            <div class="receipt-header">
+              <div class="receipt-icon">
+                <i class="fa-solid fa-receipt"></i>
+              </div>
+              <div class="receipt-status">
+                <span class="status-badge downloaded">Téléchargée</span>
+              </div>
+            </div>
+            
+            <div class="receipt-content">
+              <h3>Quittance de loyer</h3>
+              <p class="receipt-period">Décembre 2023</p>
+              <div class="receipt-details">
+                <div class="detail-item">
+                  <span class="detail-label">Loyer :</span>
+                  <span class="detail-value">800 €</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">Charges :</span>
+                  <span class="detail-value">120 €</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">Total :</span>
+                  <span class="detail-value total">920 €</span>
+                </div>
+              </div>
+              <div class="receipt-info">
+                <p><i class="fa-solid fa-building"></i> Appartement T3 - Rue de la Paix</p>
+                <p><i class="fa-solid fa-user"></i> Bailleur : Marie Martin</p>
+              </div>
+            </div>
+            
+            <div class="receipt-actions">
+              <button class="btn btn-outline btn-sm" onclick="downloadReceipt('2023-12')">
+                <i class="fa-solid fa-download"></i>
+                Retélécharger
+              </button>
+              <button class="btn btn-outline btn-sm" onclick="viewReceipt('2023-12')">
+                <i class="fa-solid fa-eye"></i>
+                Voir
+              </button>
+            </div>
+          </div>
+
+          <!-- Receipt Card -->
+          <div class="receipt-card">
+            <div class="receipt-header">
+              <div class="receipt-icon">
+                <i class="fa-solid fa-receipt"></i>
+              </div>
+              <div class="receipt-status">
+                <span class="status-badge downloaded">Téléchargée</span>
+              </div>
+            </div>
+            
+            <div class="receipt-content">
+              <h3>Quittance de loyer</h3>
+              <p class="receipt-period">Novembre 2023</p>
+              <div class="receipt-details">
+                <div class="detail-item">
+                  <span class="detail-label">Loyer :</span>
+                  <span class="detail-value">800 €</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">Charges :</span>
+                  <span class="detail-value">120 €</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">Total :</span>
+                  <span class="detail-value total">920 €</span>
+                </div>
+              </div>
+              <div class="receipt-info">
+                <p><i class="fa-solid fa-building"></i> Appartement T3 - Rue de la Paix</p>
+                <p><i class="fa-solid fa-user"></i> Bailleur : Marie Martin</p>
+              </div>
+            </div>
+            
+            <div class="receipt-actions">
+              <button class="btn btn-outline btn-sm" onclick="downloadReceipt('2023-11')">
+                <i class="fa-solid fa-download"></i>
+                Retélécharger
+              </button>
+              <button class="btn btn-outline btn-sm" onclick="viewReceipt('2023-11')">
+                <i class="fa-solid fa-eye"></i>
+                Voir
+              </button>
+            </div>
+          </div>
+
+          <!-- Receipt Card -->
+          <div class="receipt-card">
+            <div class="receipt-header">
+              <div class="receipt-icon">
+                <i class="fa-solid fa-receipt"></i>
+              </div>
+              <div class="receipt-status">
+                <span class="status-badge downloaded">Téléchargée</span>
+              </div>
+            </div>
+            
+            <div class="receipt-content">
+              <h3>Quittance de loyer</h3>
+              <p class="receipt-period">Octobre 2023</p>
+              <div class="receipt-details">
+                <div class="detail-item">
+                  <span class="detail-label">Loyer :</span>
+                  <span class="detail-value">800 €</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">Charges :</span>
+                  <span class="detail-value">120 €</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">Total :</span>
+                  <span class="detail-value total">920 €</span>
+                </div>
+              </div>
+              <div class="receipt-info">
+                <p><i class="fa-solid fa-building"></i> Appartement T3 - Rue de la Paix</p>
+                <p><i class="fa-solid fa-user"></i> Bailleur : Marie Martin</p>
+              </div>
+            </div>
+            
+            <div class="receipt-actions">
+              <button class="btn btn-outline btn-sm" onclick="downloadReceipt('2023-10')">
+                <i class="fa-solid fa-download"></i>
+                Retélécharger
+              </button>
+              <button class="btn btn-outline btn-sm" onclick="viewReceipt('2023-10')">
+                <i class="fa-solid fa-eye"></i>
+                Voir
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Pagination -->
+        <div class="pagination">
+          <button class="pagination-btn" disabled>
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <span class="pagination-info">Page 1 sur 3</span>
+          <button class="pagination-btn">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/dashboard.js"></script>
+  <script src="js/quittances.js"></script>
+</body>
+</html> 

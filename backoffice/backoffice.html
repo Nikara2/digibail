@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Backoffice Administration – Digibail</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/backoffice.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <i class="fa-solid fa-building-columns"></i>
+          <span>Digibail</span>
+        </div>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <h3>Administration</h3>
+          <a href="#" class="nav-link active">
+            <i class="fa-solid fa-tachometer-alt"></i>
+            <span>Tableau de bord</span>
+          </a>
+          <a href="#users" class="nav-link">
+            <i class="fa-solid fa-users"></i>
+            <span>Utilisateurs</span>
+          </a>
+          <a href="#properties" class="nav-link">
+            <i class="fa-solid fa-building"></i>
+            <span>Biens immobiliers</span>
+          </a>
+          <a href="#contracts" class="nav-link">
+            <i class="fa-solid fa-file-contract"></i>
+            <span>Contrats</span>
+          </a>
+          <a href="#payments" class="nav-link">
+            <i class="fa-solid fa-credit-card"></i>
+            <span>Paiements</span>
+          </a>
+        </div>
+        
+        <div class="nav-section">
+          <h3>Gestion</h3>
+          <a href="#reports" class="nav-link">
+            <i class="fa-solid fa-chart-bar"></i>
+            <span>Rapports</span>
+          </a>
+          <a href="#settings" class="nav-link">
+            <i class="fa-solid fa-cog"></i>
+            <span>Paramètres</span>
+          </a>
+          <a href="#support" class="nav-link">
+            <i class="fa-solid fa-headset"></i>
+            <span>Support</span>
+          </a>
+          <a href="#logs" class="nav-link">
+            <i class="fa-solid fa-list"></i>
+            <span>Logs système</span>
+          </a>
+        </div>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <div class="user-info">
+          <div class="user-avatar">
+            <i class="fa-solid fa-user-shield"></i>
+          </div>
+          <div class="user-details">
+            <span class="user-name">Admin Digibail</span>
+            <span class="user-role">Administrateur</span>
+          </div>
+        </div>
+        <a href="login.html" class="logout-btn">
+          <i class="fa-solid fa-sign-out-alt"></i>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="dashboard-header">
+        <div class="header-left">
+          <h1>Backoffice Administration</h1>
+          <p>Gestion complète de la plateforme Digibail</p>
+        </div>
+        <div class="header-right">
+          <button class="btn btn-primary" onclick="generateSystemReport()">
+            <i class="fa-solid fa-file-pdf"></i>
+            Rapport système
+          </button>
+          <div class="notifications">
+            <i class="fa-solid fa-bell"></i>
+            <span class="notification-badge">12</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- System Alerts -->
+      <section class="alerts-section">
+        <div class="alert alert-critical">
+          <i class="fa-solid fa-exclamation-triangle"></i>
+          <div class="alert-content">
+            <h4>Erreur système critique</h4>
+            <p>Problème de connexion à la base de données - 3 tentatives échouées</p>
+          </div>
+          <button class="btn btn-danger btn-sm">Résoudre</button>
+        </div>
+        
+        <div class="alert alert-warning">
+          <i class="fa-solid fa-exclamation-triangle"></i>
+          <div class="alert-content">
+            <h4>Espace disque faible</h4>
+            <p>L'espace disque du serveur atteint 85% de sa capacité</p>
+          </div>
+          <button class="btn btn-warning btn-sm">Optimiser</button>
+        </div>
+        
+        <div class="alert alert-info">
+          <i class="fa-solid fa-info-circle"></i>
+          <div class="alert-content">
+            <h4>Maintenance planifiée</h4>
+            <p>Maintenance système prévue le 15/12/2024 de 02h00 à 04h00</p>
+          </div>
+          <button class="btn btn-outline btn-sm">Détails</button>
+        </div>
+      </section>
+
+      <!-- System Stats -->
+      <section class="stats-section">
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fa-solid fa-users"></i>
+          </div>
+          <div class="stat-content">
+            <h3>1,247</h3>
+            <p>Utilisateurs actifs</p>
+            <span class="stat-change positive">+12% ce mois</span>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fa-solid fa-building"></i>
+          </div>
+          <div class="stat-content">
+            <h3>856</h3>
+            <p>Biens gérés</p>
+            <span class="stat-change positive">+8% ce mois</span>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fa-solid fa-euro-sign"></i>
+          </div>
+          <div class="stat-content">
+            <h3>2.4M €</h3>
+            <p>Volume transactions</p>
+            <span class="stat-change positive">+15% ce mois</span>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fa-solid fa-server"></i>
+          </div>
+          <div class="stat-content">
+            <h3>99.8%</h3>
+            <p>Uptime système</p>
+            <span class="stat-change neutral">Stable</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Main Dashboard Content -->
+      <div class="dashboard-grid">
+        <!-- System Performance -->
+        <section class="dashboard-card">
+          <div class="card-header">
+            <h2>Performance système</h2>
+            <div class="card-actions">
+              <button class="btn btn-outline btn-sm" onclick="refreshMetrics()">
+                <i class="fa-solid fa-sync-alt"></i>
+                Actualiser
+              </button>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="metrics-grid">
+              <div class="metric-item">
+                <div class="metric-header">
+                  <span>CPU</span>
+                  <span class="metric-value">67%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 67%"></div>
+                </div>
+              </div>
+              
+              <div class="metric-item">
+                <div class="metric-header">
+                  <span>RAM</span>
+                  <span class="metric-value">78%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 78%"></div>
+                </div>
+              </div>
+              
+              <div class="metric-item">
+                <div class="metric-header">
+                  <span>Disque</span>
+                  <span class="metric-value">85%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill warning" style="width: 85%"></div>
+                </div>
+              </div>
+              
+              <div class="metric-item">
+                <div class="metric-header">
+                  <span>Réseau</span>
+                  <span class="metric-value">45%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 45%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Recent Activity -->
+        <section class="dashboard-card">
+          <div class="card-header">
+            <h2>Activité récente</h2>
+            <a href="#logs" class="card-link">Voir tout</a>
+          </div>
+          <div class="card-content">
+            <div class="activity-list">
+              <div class="activity-item">
+                <div class="activity-icon">
+                  <i class="fa-solid fa-user-plus"></i>
+                </div>
+                <div class="activity-content">
+                  <h4>Nouveau bailleur inscrit</h4>
+                  <p>Marie Dubois s'est inscrite sur la plateforme</p>
+                  <span class="activity-time">Il y a 5 minutes</span>
+                </div>
+              </div>
+              
+              <div class="activity-item">
+                <div class="activity-icon">
+                  <i class="fa-solid fa-file-contract"></i>
+                </div>
+                <div class="activity-content">
+                  <h4>Contrat signé</h4>
+                  <p>Contrat CTR-2024-156 signé électroniquement</p>
+                  <span class="activity-time">Il y a 12 minutes</span>
+                </div>
+              </div>
+              
+              <div class="activity-item">
+                <div class="activity-icon">
+                  <i class="fa-solid fa-credit-card"></i>
+                </div>
+                <div class="activity-content">
+                  <h4>Paiement reçu</h4>
+                  <p>Paiement de 1,200€ traité avec succès</p>
+                  <span class="activity-time">Il y a 25 minutes</span>
+                </div>
+              </div>
+              
+              <div class="activity-item">
+                <div class="activity-icon">
+                  <i class="fa-solid fa-exclamation-triangle"></i>
+                </div>
+                <div class="activity-content">
+                  <h4>Tentative de connexion échouée</h4>
+                  <p>5 tentatives échouées pour l'utilisateur ID: 1247</p>
+                  <span class="activity-time">Il y a 1 heure</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- User Management -->
+        <section class="dashboard-card">
+          <div class="card-header">
+            <h2>Gestion utilisateurs</h2>
+            <div class="card-actions">
+              <button class="btn btn-primary btn-sm" onclick="showUserModal()">
+                <i class="fa-solid fa-user-plus"></i>
+                Ajouter
+              </button>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="user-stats">
+              <div class="user-stat">
+                <span class="stat-number">847</span>
+                <span class="stat-label">Bailleurs</span>
+              </div>
+              <div class="user-stat">
+                <span class="stat-number">400</span>
+                <span class="stat-label">Locataires</span>
+              </div>
+              <div class="user-stat">
+                <span class="stat-number">12</span>
+                <span class="stat-label">Administrateurs</span>
+              </div>
+            </div>
+            
+            <div class="recent-users">
+              <h4>Derniers inscrits</h4>
+              <div class="user-list">
+                <div class="user-item">
+                  <div class="user-avatar">
+                    <i class="fa-solid fa-user"></i>
+                  </div>
+                  <div class="user-info">
+                    <span class="user-name">Marie Dubois</span>
+                    <span class="user-role">Bailleur</span>
+                  </div>
+                  <div class="user-status active">Actif</div>
+                </div>
+                
+                <div class="user-item">
+                  <div class="user-avatar">
+                    <i class="fa-solid fa-user"></i>
+                  </div>
+                  <div class="user-info">
+                    <span class="user-name">Pierre Martin</span>
+                    <span class="user-role">Locataire</span>
+                  </div>
+                  <div class="user-status pending">En attente</div>
+                </div>
+                
+                <div class="user-item">
+                  <div class="user-avatar">
+                    <i class="fa-solid fa-user"></i>
+                  </div>
+                  <div class="user-info">
+                    <span class="user-name">Sophie Bernard</span>
+                    <span class="user-role">Bailleur</span>
+                  </div>
+                  <div class="user-status active">Actif</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- System Health -->
+        <section class="dashboard-card">
+          <div class="card-header">
+            <h2>Santé du système</h2>
+            <span class="system-status healthy">Système opérationnel</span>
+          </div>
+          <div class="card-content">
+            <div class="health-grid">
+              <div class="health-item healthy">
+                <i class="fa-solid fa-database"></i>
+                <span>Base de données</span>
+              </div>
+              <div class="health-item healthy">
+                <i class="fa-solid fa-server"></i>
+                <span>Serveur web</span>
+              </div>
+              <div class="health-item warning">
+                <i class="fa-solid fa-hdd"></i>
+                <span>Stockage</span>
+              </div>
+              <div class="health-item healthy">
+                <i class="fa-solid fa-network-wired"></i>
+                <span>Réseau</span>
+              </div>
+              <div class="health-item healthy">
+                <i class="fa-solid fa-shield-alt"></i>
+                <span>Sécurité</span>
+              </div>
+              <div class="health-item healthy">
+                <i class="fa-solid fa-sync"></i>
+                <span>Sauvegarde</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Quick Actions -->
+        <section class="dashboard-card">
+          <div class="card-header">
+            <h2>Actions rapides</h2>
+          </div>
+          <div class="card-content">
+            <div class="quick-actions">
+              <button class="action-btn" onclick="showBackupModal()">
+                <i class="fa-solid fa-download"></i>
+                <span>Sauvegarde</span>
+              </button>
+              
+              <button class="action-btn" onclick="showMaintenanceModal()">
+                <i class="fa-solid fa-tools"></i>
+                <span>Maintenance</span>
+              </button>
+              
+              <button class="action-btn" onclick="showSecurityModal()">
+                <i class="fa-solid fa-shield-alt"></i>
+                <span>Sécurité</span>
+              </button>
+              
+              <button class="action-btn" onclick="showAnalyticsModal()">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Analytics</span>
+              </button>
+              
+              <button class="action-btn" onclick="showSettingsModal()">
+                <i class="fa-solid fa-cog"></i>
+                <span>Paramètres</span>
+              </button>
+              
+              <button class="action-btn" onclick="showSupportModal()">
+                <i class="fa-solid fa-headset"></i>
+                <span>Support</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Charts Section -->
+        <section class="dashboard-card full-width">
+          <div class="card-header">
+            <h2>Analytics et métriques</h2>
+            <div class="chart-controls">
+              <select id="chartPeriod" onchange="updateCharts()">
+                <option value="7">7 jours</option>
+                <option value="30" selected>30 jours</option>
+                <option value="90">90 jours</option>
+                <option value="365">1 an</option>
+              </select>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="charts-grid">
+              <div class="chart-container">
+                <h4>Inscriptions utilisateurs</h4>
+                <canvas id="usersChart"></canvas>
+              </div>
+              
+              <div class="chart-container">
+                <h4>Volume de transactions</h4>
+                <canvas id="transactionsChart"></canvas>
+              </div>
+              
+              <div class="chart-container">
+                <h4>Performance système</h4>
+                <canvas id="performanceChart"></canvas>
+              </div>
+              
+              <div class="chart-container">
+                <h4>Répartition des biens</h4>
+                <canvas id="propertiesChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modals -->
+  <div id="userModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Ajouter un utilisateur</h3>
+        <button class="modal-close" onclick="closeModal('userModal')">
+          <i class="fa-solid fa-times"></i>
+        </button>
+      </div>
+      <form id="userForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">Prénom</label>
+            <input type="text" id="firstName" name="firstName" required>
+          </div>
+          <div class="form-group">
+            <label for="lastName">Nom</label>
+            <input type="text" id="lastName" name="lastName" required>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="role">Rôle</label>
+          <select id="role" name="role" required>
+            <option value="">Sélectionner un rôle</option>
+            <option value="bailleur">Bailleur</option>
+            <option value="locataire">Locataire</option>
+            <option value="admin">Administrateur</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="status">Statut</label>
+          <select id="status" name="status" required>
+            <option value="active">Actif</option>
+            <option value="pending">En attente</option>
+            <option value="suspended">Suspendu</option>
+          </select>
+        </div>
+        
+        <div class="modal-actions">
+          <button type="button" class="btn btn-outline" onclick="closeModal('userModal')">Annuler</button>
+          <button type="submit" class="btn btn-primary">Créer l'utilisateur</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/backoffice.js"></script>
+</body>
+</html> 

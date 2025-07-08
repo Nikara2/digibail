@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loyers – Digibail</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/bailleur.css">
+  <link rel="stylesheet" href="../css/loyers.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <i class="fa-solid fa-building-columns"></i>
+          <span>Digibail</span>
+        </div>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <h3>Mon Espace/bailleur</h3>
+          <a href="bailleur.html" class="nav-link">
+            <i class="fa-solid fa-home"></i>
+            <span>Tableau de bord</span>
+          </a>
+          <a href="mes-biens.html" class="nav-link">
+            <i class="fa-solid fa-building"></i>
+            <span>Mes biens</span>
+          </a>
+          <a href="contrats.html" class="nav-link">
+            <i class="fa-solid fa-file-contract"></i>
+            <span>Contrats</span>
+          </a>
+          <a href="loyers.html" class="nav-link active">
+            <i class="fa-solid fa-credit-card"></i>
+            <span>Loyers</span>
+          </a>
+          <a href="quittances.html" class="nav-link">
+            <i class="fa-solid fa-chart-line"></i>
+            <span>Rapports</span>
+          </a>
+        </div>
+        
+        <div class="nav-section">
+          <h3>Gestion</h3>
+          <a href="ajouter-bien.html" class="nav-link">
+            <i class="fa-solid fa-plus"></i>
+            <span>Ajouter un bien</span>
+          </a>
+          <a href="nouveau-client.html" class="nav-link">
+            <i class="fa-solid fa-user-plus"></i>
+            <span>Nouveau locataire</span>
+          </a>
+          <a href="#" class="nav-link">
+            <i class="fa-solid fa-headset"></i>
+            <span>Support</span>
+          </a>
+        </div>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <div class="user-info">
+          <div class="user-avatar">
+            <i class="fa-solid fa-user-tie"></i>
+          </div>
+          <div class="user-details">
+            <span class="user-name">Marie Martin</span>
+            <span class="user-role">Bailleur</span>
+          </div>
+        </div>
+        <a href="../login.html" class="logout-btn">
+          <i class="fa-solid fa-sign-out-alt"></i>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="dashboard-header">
+        <div class="header-left">
+          <h1>Loyers</h1>
+          <p>Gérez vos paiements de loyers</p>
+        </div>
+        <div class="header-right">
+          <button class="btn btn-outline" onclick="exportRentals()">
+            <i class="fa-solid fa-download"></i>
+            Exporter
+          </button>
+          <button class="btn btn-primary" onclick="generateQuittance()">
+            <i class="fa-solid fa-file-pdf"></i>
+            Générer quittance
+          </button>
+        </div>
+      </header>
+
+      <!-- Stats Overview -->
+      <section class="stats-overview">
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fa-solid fa-euro-sign"></i>
+          </div>
+          <div class="stat-content">
+            <h3>3 900 €</h3>
+            <p>Total ce mois</p>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fa-solid fa-check-circle"></i>
+          </div>
+          <div class="stat-content">
+            <h3>4</h3>
+            <p>Paiements reçus</p>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fa-solid fa-exclamation-triangle"></i>
+          </div>
+          <div class="stat-content">
+            <h3>1</h3>
+            <p>En retard</p>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fa-solid fa-chart-line"></i>
+          </div>
+          <div class="stat-content">
+            <h3>95%</h3>
+            <p>Taux de recouvrement</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Filters and Search -->
+      <section class="filters-section">
+        <div class="filters-row">
+          <div class="search-box">
+            <i class="fa-solid fa-search"></i>
+            <input type="text" placeholder="Rechercher un locataire ou un bien..." id="searchInput">
+          </div>
+          
+          <div class="filter-group">
+            <select id="statusFilter">
+              <option value="">Tous les statuts</option>
+              <option value="received">Reçu</option>
+              <option value="overdue">En retard</option>
+              <option value="pending">En attente</option>
+            </select>
+            
+            <select id="monthFilter">
+              <option value="">Tous les mois</option>
+              <option value="2024-01" selected>Janvier 2024</option>
+              <option value="2023-12">Décembre 2023</option>
+              <option value="2023-11">Novembre 2023</option>
+            </select>
+            
+            <select id="sortFilter">
+              <option value="date-desc">Date décroissante</option>
+              <option value="date">Date croissante</option>
+              <option value="amount">Montant croissant</option>
+              <option value="amount-desc">Montant décroissant</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- Rentals List -->
+      <section class="rentals-list">
+        <div class="rental-card">
+          <div class="rental-header">
+            <div class="rental-info">
+              <h3>Appartement T3 - Rue de la Paix</h3>
+              <p>Jean Dupont • 5 janvier 2024</p>
+            </div>
+            <div class="rental-status overdue">
+              <i class="fa-solid fa-exclamation-triangle"></i>
+              <span>En retard</span>
+            </div>
+          </div>
+          
+          <div class="rental-details">
+            <div class="detail-row">
+              <div class="detail-item">
+                <i class="fa-solid fa-calendar"></i>
+                <span>Échéance : 5 janvier 2024</span>
+              </div>
+              <div class="detail-item">
+                <i class="fa-solid fa-clock"></i>
+                <span>Retard : 15 jours</span>
+              </div>
+            </div>
+            <div class="detail-row">
+              <div class="detail-item">
+                <i class="fa-solid fa-phone"></i>
+                <span>06 12 34 56 78</span>
+              </div>
+              <div class="detail-item">
+                <i class="fa-solid fa-envelope"></i>
+                <span>jean.dupont@email.com</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="rental-footer">
+            <div class="rental-amount">
+              <span class="amount">800 €</span>
+              <span class="charges">+ 50 € charges</span>
+            </div>
+            <div class="rental-actions">
+              <button class="btn btn-outline btn-sm" onclick="sendReminder(1)">
+                <i class="fa-solid fa-bell"></i>
+                Relancer
+              </button>
+              <button class="btn btn-primary btn-sm" onclick="recordPayment(1)">
+                <i class="fa-solid fa-check"></i>
+                Enregistrer paiement
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="rental-card">
+          <div class="rental-header">
+            <div class="rental-info">
+              <h3>Appartement T2 - Avenue des Champs</h3>
+              <p>Sophie Bernard • 15 janvier 2024</p>
+            </div>
+            <div class="rental-status received">
+              <i class="fa-solid fa-check-circle"></i>
+              <span>Reçu</span>
+            </div>
+          </div>
+          
+          <div class="rental-details">
+            <div class="detail-row">
+              <div class="detail-item">
+                <i class="fa-solid fa-calendar"></i>
+                <span>Échéance : 5 janvier 2024</span>
+              </div>
+              <div class="detail-item">
+                <i class="fa-solid fa-check"></i>
+                <span>Reçu le : 15 janvier 2024</span>
+              </div>
+            </div>
+            <div class="detail-row">
+              <div class="detail-item">
+                <i class="fa-solid fa-credit-card"></i>
+                <span>Virement bancaire</span>
+              </div>
+              <div class="detail-item">
+                <i class="fa-solid fa-receipt"></i>
+                <span>Quittance générée</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="rental-footer">
+            <div class="rental-amount">
+              <span class="amount">650 €</span>
+              <span class="charges">+ 40 € charges</span>
+            </div>
+            <div class="rental-actions">
+              <button class="btn btn-outline btn-sm" onclick="viewQuittance(2)">
+                <i class="fa-solid fa-file-pdf"></i>
+                Voir quittance
+              </button>
+              <button class="btn btn-primary btn-sm" onclick="downloadQuittance(2)">
+                <i class="fa-solid fa-download"></i>
+                Télécharger
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="rental-card">
+          <div class="rental-header">
+            <div class="rental-info">
+              <h3>Studio - Boulevard Central</h3>
+              <p>Pierre Durand • 10 janvier 2024</p>
+            </div>
+            <div class="rental-status received">
+              <i class="fa-solid fa-check-circle"></i>
+              <span>Reçu</span>
+            </div>
+          </div>
+          
+          <div class="rental-details">
+            <div class="detail-row">
+              <div class="detail-item">
+                <i class="fa-solid fa-calendar"></i>
+                <span>Échéance : 5 janvier 2024</span>
+              </div>
+              <div class="detail-item">
+                <i class="fa-solid fa-check"></i>
+                <span>Reçu le : 10 janvier 2024</span>
+              </div>
+            </div>
+            <div class="detail-row">
+              <div class="detail-item">
+                <i class="fa-solid fa-credit-card"></i>
+                <span>Virement bancaire</span>
+              </div>
+              <div class="detail-item">
+                <i class="fa-solid fa-receipt"></i>
+                <span>Quittance générée</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="rental-footer">
+            <div class="rental-amount">
+              <span class="amount">500 €</span>
+              <span class="charges">+ 30 € charges</span>
+            </div>
+            <div class="rental-actions">
+              <button class="btn btn-outline btn-sm" onclick="viewQuittance(3)">
+                <i class="fa-solid fa-file-pdf"></i>
+                Voir quittance
+              </button>
+              <button class="btn btn-primary btn-sm" onclick="downloadQuittance(3)">
+                <i class="fa-solid fa-download"></i>
+                Télécharger
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="rental-card">
+          <div class="rental-header">
+            <div class="rental-info">
+              <h3>Maison T4 - Rue du Parc</h3>
+              <p>Lucie Moreau • 8 janvier 2024</p>
+            </div>
+            <div class="rental-status received">
+              <i class="fa-solid fa-check-circle"></i>
+              <span>Reçu</span>
+            </div>
+          </div>
+          
+          <div class="rental-details">
+            <div class="detail-row">
+              <div class="detail-item">
+                <i class="fa-solid fa-calendar"></i>
+                <span>Échéance : 5 janvier 2024</span>
+              </div>
+              <div class="detail-item">
+                <i class="fa-solid fa-check"></i>
+                <span>Reçu le : 8 janvier 2024</span>
+              </div>
+            </div>
+            <div class="detail-row">
+              <div class="detail-item">
+                <i class="fa-solid fa-credit-card"></i>
+                <span>Virement bancaire</span>
+              </div>
+              <div class="detail-item">
+                <i class="fa-solid fa-receipt"></i>
+                <span>Quittance générée</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="rental-footer">
+            <div class="rental-amount">
+              <span class="amount">1 200 €</span>
+              <span class="charges">+ 80 € charges</span>
+            </div>
+            <div class="rental-actions">
+              <button class="btn btn-outline btn-sm" onclick="viewQuittance(4)">
+                <i class="fa-solid fa-file-pdf"></i>
+                Voir quittance
+              </button>
+              <button class="btn btn-primary btn-sm" onclick="downloadQuittance(4)">
+                <i class="fa-solid fa-download"></i>
+                Télécharger
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pagination -->
+      <section class="pagination-section">
+        <div class="pagination-info">
+          <span>Affichage de 1 à 4 sur 4 paiements</span>
+        </div>
+        <div class="pagination-controls">
+          <button class="btn btn-outline btn-sm" disabled>
+            <i class="fa-solid fa-chevron-left"></i>
+            Précédent
+          </button>
+          <span class="page-number active">1</span>
+          <button class="btn btn-outline btn-sm" disabled>
+            Suivant
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/loyers.js"></script>
+</body>
+</html> 

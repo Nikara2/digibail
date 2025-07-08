@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tableau de bord Locataire – Digibail</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <i class="fa-solid fa-building-columns"></i>
+          <span>Digibail</span>
+        </div>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <h3>Mon Espace/locataire</h3>
+          
+          <a href="#" class="nav-link active">
+            <i class="fa-solid fa-home"></i>
+            <span>Tableau de bord</span>
+          </a>
+          <a href="contrats.html" class="nav-link">
+            <i class="fa-solid fa-file-contract"></i>
+            <span>Mes contrats</span>
+          </a>
+          <a href="paiements.html" class="nav-link">
+            <i class="fa-solid fa-credit-card"></i>
+            <span>Paiements</span>
+          </a>
+          <a href="quittances.html" class="nav-link">
+            <i class="fa-solid fa-receipt"></i>
+            <span>Quittances</span>
+          </a>
+        </div>
+        
+        <div class="nav-section">
+          <h3>Services</h3>
+          <a href="paiement.html" class="nav-link">
+            <i class="fa-solid fa-money-bill-transfer"></i>
+            <span>Payer mon loyer</span>
+          </a>
+          <a href="#" class="nav-link">
+            <i class="fa-solid fa-headset"></i>
+            <span>Support</span>
+          </a>
+        </div>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <div class="user-info">
+          <div class="user-avatar">
+            <i class="fa-solid fa-user"></i>
+          </div>
+          <div class="user-details">
+            <span class="user-name">Jean Dupont</span>
+            <span class="user-role">Locataire</span>
+          </div>
+        </div>
+        <a href="../login.html" class="logout-btn">
+          <i class="fa-solid fa-sign-out-alt"></i>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="dashboard-header">
+        <div class="header-left">
+          <h1>Tableau de bord</h1>
+          <p>Bienvenue, Jean Dupont</p>
+        </div>
+        <div class="header-right">
+          <button class="btn btn-primary" onclick="window.location.href='paiement.html'">
+            <i class="fa-solid fa-money-bill-transfer"></i>
+            Payer mon loyer
+          </button>
+          <div class="notifications">
+            <i class="fa-solid fa-bell"></i>
+            <span class="notification-badge">2</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Alerts Section -->
+      <section class="alerts-section">
+        <div class="alert alert-warning">
+          <i class="fa-solid fa-exclamation-triangle"></i>
+          <div class="alert-content">
+            <h4>Paiement en retard</h4>
+            <p>Votre loyer de janvier 2024 n'a pas encore été payé. Échéance : 5 janvier 2024</p>
+          </div>
+          <button class="btn btn-primary btn-sm">Payer maintenant</button>
+        </div>
+        
+        <div class="alert alert-info">
+          <i class="fa-solid fa-info-circle"></i>
+          <div class="alert-content">
+            <h4>Nouveau message</h4>
+            <p>Votre bailleur a ajouté un nouveau message concernant les travaux</p>
+          </div>
+          <button class="btn btn-outline btn-sm">Voir</button>
+        </div>
+      </section>
+
+      <!-- Stats Cards -->
+      <section class="stats-section">
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fa-solid fa-home"></i>
+          </div>
+          <div class="stat-content">
+            <h3>1</h3>
+            <p>Bien loué</p>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fa-solid fa-file-contract"></i>
+          </div>
+          <div class="stat-content">
+            <h3>1</h3>
+            <p>Contrat actif</p>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fa-solid fa-credit-card"></i>
+          </div>
+          <div class="stat-content">
+            <h3>12</h3>
+            <p>Paiements effectués</p>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fa-solid fa-calendar-check"></i>
+          </div>
+          <div class="stat-content">
+            <h3>95%</h3>
+            <p>Paiements à jour</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Main Dashboard Content -->
+      <div class="dashboard-grid">
+        <!-- Current Payments -->
+        <section class="dashboard-card">
+          <div class="card-header">
+            <h2>Paiements en cours</h2>
+            <a href="#" class="card-link">Voir tout</a>
+          </div>
+          <div class="card-content">
+            <div class="payment-item">
+              <div class="payment-info">
+                <h4>Loyer janvier 2024</h4>
+                <p>Échéance : 5 janvier 2024</p>
+                <span class="payment-status overdue">En retard</span>
+              </div>
+              <div class="payment-amount">
+                <span class="amount">50000 Fcfa</span>
+                <button class="btn btn-primary btn-sm">Payer</button>
+              </div>
+            </div>
+            
+            <div class="payment-item">
+              <div class="payment-info">
+                <h4>Charges décembre 2023</h4>
+                <p>Échéance : 15 décembre 2023</p>
+                <span class="payment-status paid">Payé</span>
+              </div>
+              <div class="payment-amount">
+                <span class="amount">7500 Fcfa</span>
+                <i class="fa-solid fa-check-circle text-success"></i>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Active Contracts -->
+        <section class="dashboard-card">
+          <div class="card-header">
+            <h2>Contrats actifs</h2>
+            <a href="#" class="card-link">Voir tout</a>
+          </div>
+          <div class="card-content">
+            <div class="contract-item">
+              <div class="contract-info">
+                <h4>Appartement T3 - Rue de la Paix</h4>
+                <p>Bailleur : Marie Martin</p>
+                <p>Durée : 3 ans (2023-2026)</p>
+                <span class="contract-status active">Actif</span>
+              </div>
+              <div class="contract-actions">
+                <a href="contrat.html" class="btn btn-outline btn-sm">
+                  <i class="fa-solid fa-eye"></i>
+                  Voir
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Payment History Chart -->
+        <section class="dashboard-card full-width">
+          <div class="card-header">
+            <h2>Historique des paiements</h2>
+            <div class="chart-controls">
+              <select class="chart-period">
+                <option value="6">6 derniers mois</option>
+                <option value="12" selected>12 derniers mois</option>
+                <option value="24">24 derniers mois</option>
+              </select>
+            </div>
+          </div>
+          <div class="card-content">
+            <canvas id="paymentChart" width="400" height="200"></canvas>
+          </div>
+        </section>
+
+        <!-- Recent Activities -->
+        <section class="dashboard-card">
+          <div class="card-header">
+            <h2>Activités récentes</h2>
+          </div>
+          <div class="card-content">
+            <div class="activity-item">
+              <div class="activity-icon">
+                <i class="fa-solid fa-credit-card"></i>
+              </div>
+              <div class="activity-content">
+                <h4>Paiement effectué</h4>
+                <p>Loyer décembre 2023 - 50000 Fcfa</p>
+                <span class="activity-time">Il y a 2 jours</span>
+              </div>
+            </div>
+            
+            <div class="activity-item">
+              <div class="activity-icon">
+                <i class="fa-solid fa-file-contract"></i>
+              </div>
+              <div class="activity-content">
+                <h4>Contrat renouvelé</h4>
+                <p>Renouvellement automatique du bail</p>
+                <span class="activity-time">Il y a 1 semaine</span>
+              </div>
+            </div>
+            
+            <div class="activity-item">
+              <div class="activity-icon">
+                <i class="fa-solid fa-receipt"></i>
+              </div>
+              <div class="activity-content">
+                <h4>Quittance reçue</h4>
+                <p>Quittance de loyer novembre 2023</p>
+                <span class="activity-time">Il y a 2 semaines</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/dashboard.js"></script>
+</body>
+</html> 

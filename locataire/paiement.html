@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payer mon loyer – Digibail</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <i class="fa-solid fa-building-columns"></i>
+          <span>Digibail</span>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <h3>Mon Espace/locataire</h3>
+          <a href="locataire.html" class="nav-link">
+            <i class="fa-solid fa-home"></i>
+            <span>Tableau de bord</span>
+          </a>
+          <a href="contrats.html" class="nav-link">
+            <i class="fa-solid fa-file-contract"></i>
+            <span>Mes contrats</span>
+          </a>
+          <a href="paiements.html" class="nav-link">
+            <i class="fa-solid fa-credit-card"></i>
+            <span>Paiements</span>
+          </a>
+          <a href="quittances.html" class="nav-link">
+            <i class="fa-solid fa-receipt"></i>
+            <span>Quittances</span>
+          </a>
+        </div>
+        <div class="nav-section">
+          <h3>Services</h3>
+          <a href="paiement.html" class="nav-link active">
+            <i class="fa-solid fa-money-bill-transfer"></i>
+            <span>Payer mon loyer</span>
+          </a>
+          <a href="#" class="nav-link">
+            <i class="fa-solid fa-headset"></i>
+            <span>Support</span>
+          </a>
+        </div>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="user-info">
+          <div class="user-avatar">
+            <i class="fa-solid fa-user"></i>
+          </div>
+          <div class="user-details">
+            <span class="user-name">Jean Dupont</span>
+            <span class="user-role">Locataire</span>
+          </div>
+        </div>
+        <a href="../login.html" class="logout-btn">
+          <i class="fa-solid fa-sign-out-alt"></i>
+        </a>
+      </div>
+    </aside>
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="dashboard-header">
+        <div class="header-left">
+          <h1>Payer mon loyer</h1>
+          <p>Réglez votre loyer en toute sécurité.</p>
+        </div>
+        <div class="header-right">
+          <div class="notifications">
+            <i class="fa-solid fa-bell"></i>
+            <span class="notification-badge">2</span>
+          </div>
+        </div>
+      </header>
+      <!-- Paiement Section -->
+      <section class="dashboard-card full-width">
+        <div class="card-header">
+          <h2>Récapitulatif du loyer</h2>
+        </div>
+        <div class="card-content">
+          <div class="payment-summary" style="margin-bottom:2rem;">
+            <p><strong>Période :</strong> Janvier 2024</p>
+            <p><strong>Montant à payer :</strong> <span class="amount">50000 Fcfa</span></p>
+            <p><strong>Échéance :</strong> 5 janvier 2024</p>
+            <p><strong>Adresse :</strong> 12 rue des Lilas, 75012 Ouagadougou</p>
+          </div>
+          <form class="payment-form">
+            <div class="form-group">
+              <label for="montant">Montant (Fcfa)</label>
+              <input type="number" id="montant" name="montant" value="50000" min="1" required>
+            </div>
+            <div class="form-group">
+              <label for="mode">Mode de paiement</label>
+              <select id="mode" name="mode" required>
+                <option value="">-- Choisir --</option>
+                <option value="cb">Carte bancaire</option>
+                <option value="virement">Virement bancaire</option>
+                <option value="OrangeMoney">Orange Money</option>
+                <option value="MoovMoney">Moov Money</option>
+                <option value="Wave">Wave</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full" style="margin-top:1rem;">
+              <i class="fa-solid fa-paper-plane"></i> Payer maintenant
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html> 

@@ -1,0 +1,258 @@
+/* Bailleur Dashboard Styles */
+
+/* Property Items */
+.property-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--color-grey);
+}
+
+.property-item:last-child {
+  border-bottom: none;
+}
+
+.property-info h4 {
+  margin: 0 0 0.3rem 0;
+  color: var(--color-text);
+  font-size: 1rem;
+}
+
+.property-info p {
+  margin: 0 0 0.3rem 0;
+  color: var(--color-text-light);
+  font-size: 0.9rem;
+}
+
+.property-status {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.property-status.occupied {
+  background: rgba(56,142,60,0.1);
+  color: var(--color-green);
+}
+
+.property-status.vacant {
+  background: rgba(245,124,0,0.1);
+  color: #f57c00;
+}
+
+.property-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.rent-amount {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-blue);
+}
+
+/* Rental Items */
+.rental-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--color-grey);
+}
+
+.rental-item:last-child {
+  border-bottom: none;
+}
+
+.rental-item.overdue {
+  background: rgba(211,47,47,0.05);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 0.5rem 0;
+}
+
+.rental-info h4 {
+  margin: 0 0 0.3rem 0;
+  color: var(--color-text);
+  font-size: 1rem;
+}
+
+.rental-info p {
+  margin: 0 0 0.3rem 0;
+  color: var(--color-text-light);
+  font-size: 0.9rem;
+}
+
+.rental-status {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.rental-status.received {
+  background: rgba(56,142,60,0.1);
+  color: var(--color-green);
+}
+
+.rental-status.overdue {
+  background: rgba(211,47,47,0.1);
+  color: #d32f2f;
+}
+
+.rental-amount {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.rental-amount .amount {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+/* Quick Actions */
+.quick-action {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--color-grey);
+}
+
+.quick-action:last-child {
+  border-bottom: none;
+}
+
+.action-icon {
+  width: 50px;
+  height: 50px;
+  background: var(--color-blue);
+  border-radius: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  font-size: 1.2rem;
+}
+
+.action-content {
+  flex: 1;
+}
+
+.action-content h4 {
+  margin: 0 0 0.3rem 0;
+  color: var(--color-text);
+  font-size: 1rem;
+}
+
+.action-content p {
+  margin: 0;
+  color: var(--color-text-light);
+  font-size: 0.9rem;
+}
+
+/* Alert Styles for Bailleur */
+.alert-success {
+  background: rgba(56,142,60,0.1);
+  border-left-color: var(--color-green);
+  color: var(--color-green);
+}
+
+/* Stats Cards for Bailleur */
+.stats-section .stat-card:nth-child(3) .stat-icon {
+  background: var(--color-green);
+}
+
+.stats-section .stat-card:nth-child(4) .stat-icon {
+  background: #f57c00;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .main-content {
+    margin-left: 0;
+  }
+  
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding: 1rem;
+  }
+  
+  .dashboard-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  
+  .stats-section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .alert {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .property-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .rental-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .quick-action {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    text-align: center;
+  }
+  
+  .quick-action .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-section {
+    grid-template-columns: 1fr;
+  }
+  
+  .header-right {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .property-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+  
+  .rental-amount {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+} 

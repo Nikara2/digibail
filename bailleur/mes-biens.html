@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mes biens – Digibail</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/bailleur.css">
+  <link rel="stylesheet" href="../css/mes-biens.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <i class="fa-solid fa-building-columns"></i>
+          <span>Digibail</span>
+        </div>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <h3>Mon Espace/bailleur</h3>
+          <a href="bailleur.html" class="nav-link">
+            <i class="fa-solid fa-home"></i>
+            <span>Tableau de bord</span>
+          </a>
+          <a href="mes-biens.html" class="nav-link active">
+            <i class="fa-solid fa-building"></i>
+            <span>Mes biens</span>
+          </a>
+          <a href="contrats.html" class="nav-link">
+            <i class="fa-solid fa-file-contract"></i>
+            <span>Contrats</span>
+          </a>
+          <a href="loyers.html" class="nav-link">
+            <i class="fa-solid fa-credit-card"></i>
+            <span>Loyers</span>
+          </a>
+          <a href="quittances.html" class="nav-link">
+            <i class="fa-solid fa-chart-line"></i>
+            <span>Rapports</span>
+          </a>
+        </div>
+        
+        <div class="nav-section">
+          <h3>Gestion</h3>
+          <a href="ajouter-bien.html" class="nav-link">
+            <i class="fa-solid fa-plus"></i>
+            <span>Ajouter un bien</span>
+          </a>
+          <a href="nouveau-client.html" class="nav-link">
+            <i class="fa-solid fa-user-plus"></i>
+            <span>Nouveau locataire</span>
+          </a>
+          <a href="#" class="nav-link">
+            <i class="fa-solid fa-headset"></i>
+            <span>Support</span>
+          </a>
+        </div>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <div class="user-info">
+          <div class="user-avatar">
+            <i class="fa-solid fa-user-tie"></i>
+          </div>
+          <div class="user-details">
+            <span class="user-name">Marie Martin</span>
+            <span class="user-role">Bailleur</span>
+          </div>
+        </div>
+        <a href="../login.html" class="logout-btn">
+          <i class="fa-solid fa-sign-out-alt"></i>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="dashboard-header">
+        <div class="header-left">
+          <h1>Mes biens</h1>
+          <p>Gérez votre portefeuille immobilier</p>
+        </div>
+        <div class="header-right">
+          <a href="ajouter-bien.html" class="btn btn-primary">
+            <i class="fa-solid fa-plus"></i>
+            Ajouter un bien
+          </a>
+        </div>
+      </header>
+
+      <!-- Stats Overview -->
+      <section class="stats-overview">
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fa-solid fa-building"></i>
+          </div>
+          <div class="stat-content">
+            <h3>5</h3>
+            <p>Total des biens</p>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fa-solid fa-home"></i>
+          </div>
+          <div class="stat-content">
+            <h3>4</h3>
+            <p>Biens loués</p>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fa-solid fa-door-open"></i>
+          </div>
+          <div class="stat-content">
+            <h3>1</h3>
+            <p>Biens disponibles</p>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fa-solid fa-euro-sign"></i>
+          </div>
+          <div class="stat-content">
+            <h3>3 900 €</h3>
+            <p>Revenus mensuels</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Filters and Search -->
+      <section class="filters-section">
+        <div class="filters-row">
+          <div class="search-box">
+            <i class="fa-solid fa-search"></i>
+            <input type="text" placeholder="Rechercher un bien..." id="searchInput">
+          </div>
+          
+          <div class="filter-group">
+            <select id="statusFilter">
+              <option value="">Tous les statuts</option>
+              <option value="occupied">Occupé</option>
+              <option value="vacant">Libre</option>
+              <option value="maintenance">En maintenance</option>
+            </select>
+            
+            <select id="typeFilter">
+              <option value="">Tous les types</option>
+              <option value="appartement">Appartement</option>
+              <option value="maison">Maison</option>
+              <option value="studio">Studio</option>
+              <option value="loft">Loft</option>
+            </select>
+            
+            <select id="sortFilter">
+              <option value="name">Nom A-Z</option>
+              <option value="rent">Loyer croissant</option>
+              <option value="rent-desc">Loyer décroissant</option>
+              <option value="date">Date d'ajout</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- Properties List -->
+      <section class="properties-list">
+        <div class="property-card">
+          <div class="property-image">
+            <img src="assets/property1.jpg" alt="Appartement T3 - Rue de la Paix" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDMwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjRjVGNUY1Ii8+CjxwYXRoIGQ9Ik0xNTAgMTAwTDEyMCA3MEgxODBMMTUwIDEwMFoiIGZpbGw9IiM5RUE5QUIiLz4KPHN2ZyB4PSIxMzAiIHk9IjgwIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIwIDMwSDEwVjIwSDEwVjEwSDIwVjIwSDMwVjMwSDIwWiIgZmlsbD0iIzlFQTlBQiIvPgo8L3N2Zz4KPC9zdmc+'">
+            <div class="property-status occupied">Occupé</div>
+          </div>
+          
+          <div class="property-content">
+            <div class="property-header">
+              <h3>Appartement T3 - Rue de la Paix</h3>
+              <div class="property-actions">
+                <button class="btn-icon" title="Modifier">
+                  <i class="fa-solid fa-edit"></i>
+                </button>
+                <button class="btn-icon" title="Supprimer">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </div>
+            </div>
+            
+            <div class="property-details">
+              <div class="detail-item">
+                <i class="fa-solid fa-map-marker-alt"></i>
+                <span>123 Rue de la Paix, 75001 Paris</span>
+              </div>
+              <div class="detail-item">
+                <i class="fa-solid fa-ruler-combined"></i>
+                <span>75 m² • 3 pièces • 2 chambres</span>
+              </div>
+              <div class="detail-item">
+                <i class="fa-solid fa-user"></i>
+                <span>Locataire : Jean Dupont</span>
+              </div>
+              <div class="detail-item">
+                <i class="fa-solid fa-calendar"></i>
+                <span>Contrat : 01/09/2023 - 31/08/2026</span>
+              </div>
+            </div>
+            
+            <div class="property-footer">
+              <div class="rent-info">
+                <span class="rent-amount">800 €/mois</span>
+                <span class="rent-status received">Reçu</span>
+              </div>
+              <div class="property-buttons">
+                <button class="btn btn-outline btn-sm">Voir détails</button>
+                <button class="btn btn-primary btn-sm">Gérer</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="property-card">
+          <div class="property-image">
+            <img src="assets/property2.jpg" alt="Appartement T2 - Avenue des Champs" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDMwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjRjVGNUY1Ii8+CjxwYXRoIGQ9Ik0xNTAgMTAwTDEyMCA3MEgxODBMMTUwIDEwMFoiIGZpbGw9IiM5RUE5QUIiLz4KPHN2ZyB4PSIxMzAiIHk9IjgwIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIwIDMwSDEwVjIwSDEwVjEwSDIwVjIwSDMwVjMwSDIwWiIgZmlsbD0iIzlFQTlBQiIvPgo8L3N2Zz4KPC9zdmc+'">
+            <div class="property-status occupied">Occupé</div>
+          </div>
+          
+          <div class="property-content">
+            <div class="property-header">
+              <h3>Appartement T2 - Avenue des Champs</h3>
+              <div class="property-actions">
+                <button class="btn-icon" title="Modifier">
+                  <i class="fa-solid fa-edit"></i>
+                </button>
+                <button class="btn-icon" title="Supprimer">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </div>
+            </div>
+            
+            <div class="property-details">
+              <div class="detail-item">
+                <i class="fa-solid fa-map-marker-alt"></i>
+                <span>456 Avenue des Champs, 75008 Paris</span>
+              </div>
+              <div class="detail-item">
+                <i class="fa-solid fa-ruler-combined"></i>
+                <span>55 m² • 2 pièces • 1 chambre</span>
+              </div>
+              <div class="detail-item">
+                <i class="fa-solid fa-user"></i>
+                <span>Locataire : Sophie Bernard</span>
+              </div>
+              <div class="detail-item">
+                <i class="fa-solid fa-calendar"></i>
+                <span>Contrat : 01/03/2023 - 28/02/2025</span>
+              </div>
+            </div>
+            
+            <div class="property-footer">
+              <div class="rent-info">
+                <span class="rent-amount">650 €/mois</span>
+                <span class="rent-status received">Reçu</span>
+              </div>
+              <div class="property-buttons">
+                <button class="btn btn-outline btn-sm">Voir détails</button>
+                <button class="btn btn-primary btn-sm">Gérer</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="property-card">
+          <div class="property-image">
+            <img src="assets/property3.jpg" alt="Studio - Boulevard Central" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDMwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjRjVGNUY1Ii8+CjxwYXRoIGQ9Ik0xNTAgMTAwTDEyMCA3MEgxODBMMTUwIDEwMFoiIGZpbGw9IiM5RUE5QUIiLz4KPHN2ZyB4PSIxMzAiIHk9IjgwIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIwIDMwSDEwVjIwSDEwVjEwSDIwVjIwSDMwVjMwSDIwWiIgZmlsbD0iIzlFQTlBQiIvPgo8L3N2Zz4KPC9zdmc+'">
+            <div class="property-status occupied">Occupé</div>
+          </div>
+          
+          <div class="property-content">
+            <div class="property-header">
+              <h3>Studio - Boulevard Central</h3>
+              <div class="property-actions">
+                <button class="btn-icon" title="Modifier">
+                  <i class="fa-solid fa-edit"></i>
+                </button>
+                <button class="btn-icon" title="Supprimer">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </div>
+            </div>
+            
+            <div class="property-details">
+              <div class="detail-item">
+                <i class="fa-solid fa-map-marker-alt"></i>
+                <span>789 Boulevard Central, 75011 Paris</span>
+              </div>
+              <div class="detail-item">
+                <i class="fa-solid fa-ruler-combined"></i>
+                <span>25 m² • 1 pièce</span>
+              </div>
+              <div class="detail-item">
+                <i class="fa-solid fa-user"></i>
+                <span>Locataire : Pierre Durand</span>
+              </div>
+              <div class="detail-item">
+                <i class="fa-solid fa-calendar"></i>
+                <span>Contrat : 01/06/2023 - 31/05/2024</span>
+              </div>
+            </div>
+            
+            <div class="property-footer">
+              <div class="rent-info">
+                <span class="rent-amount">500 €/mois</span>
+                <span class="rent-status received">Reçu</span>
+              </div>
+              <div class="property-buttons">
+                <button class="btn btn-outline btn-sm">Voir détails</button>
+                <button class="btn btn-primary btn-sm">Gérer</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="property-card">
+          <div class="property-image">
+            <img src="assets/property4.jpg" alt="Maison T4 - Rue du Parc" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDMwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjRjVGNUY1Ii8+CjxwYXRoIGQ9Ik0xNTAgMTAwTDEyMCA3MEgxODBMMTUwIDEwMFoiIGZpbGw9IiM5RUE5QUIiLz4KPHN2ZyB4PSIxMzAiIHk9IjgwIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIwIDMwSDEwVjIwSDEwVjEwSDIwVjIwSDMwVjMwSDIwWiIgZmlsbD0iIzlFQTlBQiIvPgo8L3N2Zz4KPC9zdmc+'">
+            <div class="property-status occupied">Occupé</div>
+          </div>
+          
+          <div class="property-content">
+            <div class="property-header">
+              <h3>Maison T4 - Rue du Parc</h3>
+              <div class="property-actions">
+                <button class="btn-icon" title="Modifier">
+                  <i class="fa-solid fa-edit"></i>
+                </button>
+                <button class="btn-icon" title="Supprimer">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </div>
+            </div>
+            
+            <div class="property-details">
+              <div class="detail-item">
+                <i class="fa-solid fa-map-marker-alt"></i>
+                <span>321 Rue du Parc, 92100 Boulogne-Billancourt</span>
+              </div>
+              <div class="detail-item">
+                <i class="fa-solid fa-ruler-combined"></i>
+                <span>120 m² • 4 pièces • 3 chambres</span>
+              </div>
+              <div class="detail-item">
+                <i class="fa-solid fa-user"></i>
+                <span>Locataire : Lucie Moreau</span>
+              </div>
+              <div class="detail-item">
+                <i class="fa-solid fa-calendar"></i>
+                <span>Contrat : 01/01/2023 - 31/12/2025</span>
+              </div>
+            </div>
+            
+            <div class="property-footer">
+              <div class="rent-info">
+                <span class="rent-amount">1 200 €/mois</span>
+                <span class="rent-status received">Reçu</span>
+              </div>
+              <div class="property-buttons">
+                <button class="btn btn-outline btn-sm">Voir détails</button>
+                <button class="btn btn-primary btn-sm">Gérer</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="property-card">
+          <div class="property-image">
+            <img src="assets/property5.jpg" alt="Appartement T2 - Place de la République" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDMwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjRjVGNUY1Ii8+CjxwYXRoIGQ9Ik0xNTAgMTAwTDEyMCA3MEgxODBMMTUwIDEwMFoiIGZpbGw9IiM5RUE5QUIiLz4KPHN2ZyB4PSIxMzAiIHk9IjgwIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIwIDMwSDEwVjIwSDEwVjEwSDIwVjIwSDMwVjMwSDIwWiIgZmlsbD0iIzlFQTlBQiIvPgo8L3N2Zz4KPC9zdmc+'">
+            <div class="property-status vacant">Libre</div>
+          </div>
+          
+          <div class="property-content">
+            <div class="property-header">
+              <h3>Appartement T2 - Place de la République</h3>
+              <div class="property-actions">
+                <button class="btn-icon" title="Modifier">
+                  <i class="fa-solid fa-edit"></i>
+                </button>
+                <button class="btn-icon" title="Supprimer">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </div>
+            </div>
+            
+            <div class="property-details">
+              <div class="detail-item">
+                <i class="fa-solid fa-map-marker-alt"></i>
+                <span>654 Place de la République, 75003 Paris</span>
+              </div>
+              <div class="detail-item">
+                <i class="fa-solid fa-ruler-combined"></i>
+                <span>60 m² • 2 pièces • 1 chambre</span>
+              </div>
+              <div class="detail-item">
+                <i class="fa-solid fa-user"></i>
+                <span>Locataire : Aucun</span>
+              </div>
+              <div class="detail-item">
+                <i class="fa-solid fa-calendar"></i>
+                <span>Disponible depuis : 01/12/2023</span>
+              </div>
+            </div>
+            
+            <div class="property-footer">
+              <div class="rent-info">
+                <span class="rent-amount">750 €/mois</span>
+                <span class="rent-status vacant">Disponible</span>
+              </div>
+              <div class="property-buttons">
+                <button class="btn btn-outline btn-sm">Voir détails</button>
+                <button class="btn btn-primary btn-sm">Louer</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pagination -->
+      <section class="pagination-section">
+        <div class="pagination-info">
+          <span>Affichage de 1 à 5 sur 5 biens</span>
+        </div>
+        <div class="pagination-controls">
+          <button class="btn btn-outline btn-sm" disabled>
+            <i class="fa-solid fa-chevron-left"></i>
+            Précédent
+          </button>
+          <span class="page-number active">1</span>
+          <button class="btn btn-outline btn-sm" disabled>
+            Suivant
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/mes-biens.js"></script>
+</body>
+</html> 

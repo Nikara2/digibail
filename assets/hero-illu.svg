@@ -1,0 +1,75 @@
+<svg width="320" height="240" viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1A237E;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#388E3C;stop-opacity:0.05" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="320" height="240" fill="url(#bgGradient)" rx="12"/>
+  
+  <!-- Buildings -->
+  <g transform="translate(40, 80)">
+    <!-- Building 1 -->
+    <rect x="0" y="0" width="40" height="80" fill="#1A237E" rx="4"/>
+    <rect x="8" y="10" width="8" height="8" fill="#fff" rx="1"/>
+    <rect x="24" y="10" width="8" height="8" fill="#fff" rx="1"/>
+    <rect x="8" y="25" width="8" height="8" fill="#fff" rx="1"/>
+    <rect x="24" y="25" width="8" height="8" fill="#fff" rx="1"/>
+    <rect x="8" y="40" width="8" height="8" fill="#fff" rx="1"/>
+    <rect x="24" y="40" width="8" height="8" fill="#fff" rx="1"/>
+    
+    <!-- Building 2 -->
+    <rect x="50" y="20" width="35" height="60" fill="#388E3C" rx="4"/>
+    <rect x="58" y="30" width="6" height="6" fill="#fff" rx="1"/>
+    <rect x="70" y="30" width="6" height="6" fill="#fff" rx="1"/>
+    <rect x="58" y="42" width="6" height="6" fill="#fff" rx="1"/>
+    <rect x="70" y="42" width="6" height="6" fill="#fff" rx="1"/>
+    
+    <!-- Building 3 -->
+    <rect x="95" y="10" width="30" height="70" fill="#1A237E" rx="4"/>
+    <rect x="102" y="20" width="6" height="6" fill="#fff" rx="1"/>
+    <rect x="112" y="20" width="6" height="6" fill="#fff" rx="1"/>
+    <rect x="102" y="32" width="6" height="6" fill="#fff" rx="1"/>
+    <rect x="112" y="32" width="6" height="6" fill="#fff" rx="1"/>
+    <rect x="102" y="44" width="6" height="6" fill="#fff" rx="1"/>
+    <rect x="112" y="44" width="6" height="6" fill="#fff" rx="1"/>
+  </g>
+  
+  <!-- Chart/Graph -->
+  <g transform="translate(200, 60)">
+    <rect x="0" y="0" width="80" height="60" fill="#fff" rx="6" stroke="#1A237E" stroke-width="1"/>
+    <!-- Bar chart -->
+    <rect x="10" y="45" width="8" height="10" fill="#1A237E"/>
+    <rect x="22" y="35" width="8" height="20" fill="#388E3C"/>
+    <rect x="34" y="25" width="8" height="30" fill="#1A237E"/>
+    <rect x="46" y="15" width="8" height="40" fill="#388E3C"/>
+    <rect x="58" y="5" width="8" height="50" fill="#1A237E"/>
+  </g>
+  
+  <!-- Payment icons -->
+  <g transform="translate(220, 140)">
+    <!-- Credit card -->
+    <rect x="0" y="0" width="40" height="25" fill="#388E3C" rx="3"/>
+    <rect x="5" y="5" width="30" height="3" fill="#fff"/>
+    <rect x="5" y="12" width="20" height="3" fill="#fff"/>
+    <rect x="5" y="19" width="15" height="3" fill="#fff"/>
+  </g>
+  
+  <!-- Contract icon -->
+  <g transform="translate(270, 140)">
+    <rect x="0" y="0" width="30" height="35" fill="#1A237E" rx="2"/>
+    <line x1="5" y1="8" x2="25" y2="8" stroke="#fff" stroke-width="1"/>
+    <line x1="5" y1="12" x2="25" y2="12" stroke="#fff" stroke-width="1"/>
+    <line x1="5" y1="16" x2="20" y2="16" stroke="#fff" stroke-width="1"/>
+    <line x1="5" y1="20" x2="18" y2="20" stroke="#fff" stroke-width="1"/>
+    <line x1="5" y1="24" x2="22" y2="24" stroke="#fff" stroke-width="1"/>
+    <line x1="5" y1="28" x2="15" y2="28" stroke="#fff" stroke-width="1"/>
+  </g>
+  
+  <!-- Floating elements -->
+  <circle cx="60" cy="40" r="8" fill="#388E3C" opacity="0.8"/>
+  <circle cx="260" cy="50" r="6" fill="#1A237E" opacity="0.6"/>
+  <circle cx="80" cy="180" r="5" fill="#388E3C" opacity="0.7"/>
+</svg> 
