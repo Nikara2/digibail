@@ -63,7 +63,7 @@
             <div class="input-wrapper">
               <i class="fa-solid fa-lock"></i>
               <input type="password" id="password" name="password" required placeholder="Votre mot de passe">
-              <button type="button" class="toggle-password">
+              <button type="button" class="toggle-password" title="Afficher/Masquer le mot de passe">
                 <i class="fa-solid fa-eye"></i>
               </button>
             </div>
@@ -97,7 +97,7 @@
         <form class="register-form hidden" id="registerForm">
           <div class="form-header">
             <h2>Créer un compte</h2>
-            <button type="button" class="close-form" id="closeRegister">
+            <button type="button" class="close-form" id="closeRegister" title="Fermer">
               <i class="fa-solid fa-times"></i>
             </button>
           </div>
@@ -105,39 +105,51 @@
           <div class="form-row">
             <div class="form-group">
               <label for="firstName">Prénom</label>
-              <input type="text" id="firstName" name="firstName" required>
+              <div class="input-wrapper">
+                <input type="text" id="firstName" name="firstName" required placeholder="Votre prénom">
+              </div>
             </div>
             <div class="form-group">
               <label for="lastName">Nom</label>
-              <input type="text" id="lastName" name="lastName" required>
+              <div class="input-wrapper">
+                <input type="text" id="lastName" name="lastName" required placeholder="Votre nom">
+              </div>
             </div>
           </div>
 
           <div class="form-group">
             <label for="registerEmail">Adresse e-mail</label>
-            <input type="email" id="registerEmail" name="email" required>
+            <div class="input-wrapper">
+              <input type="email" id="registerEmail" name="email" required placeholder="votre@email.com">
+            </div>
           </div>
 
           <div class="form-group">
             <label for="phone">Téléphone</label>
-            <input type="tel" id="phone" name="phone" required>
+            <div class="input-wrapper">
+              <input type="tel" id="phone" name="phone" required placeholder="Votre numéro de téléphone">
+            </div>
           </div>
 
           <div class="form-group">
             <label for="registerPassword">Mot de passe</label>
-            <input type="password" id="registerPassword" name="password" required>
+            <div class="input-wrapper">
+              <input type="password" id="registerPassword" name="password" required placeholder="Choisissez un mot de passe">
+            </div>
           </div>
 
           <div class="form-group">
             <label for="confirmPassword">Confirmer le mot de passe</label>
-            <input type="password" id="confirmPassword" name="confirmPassword" required>
+            <div class="input-wrapper">
+              <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Confirmez votre mot de passe">
+            </div>
           </div>
 
           <div class="form-group">
             <label class="checkbox-wrapper">
               <input type="checkbox" id="terms" required>
               <span class="checkmark"></span>
-              J'accepte les <a href="#">conditions d'utilisation</a> et la <a href="#">politique de confidentialité</a>
+              J'accepte les <a href="#" style="color: var(--color-blue);">conditions d'utilisation</a> et la <a href="#" style="color: var(--color-blue);">politique de confidentialité</a>
             </label>
           </div>
 
@@ -150,6 +162,79 @@
     </div>
   </main>
 
-  <script src="js/login.js"></script>
+  <script>
+    // Profile selection functionality
+    document.querySelectorAll('.profile-option').forEach(option => {
+      option.addEventListener('click', function() {
+        document.querySelectorAll('.profile-option').forEach(opt => opt.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+
+    // Toggle password visibility
+    document.querySelectorAll('.toggle-password').forEach(button => {
+      button.addEventListener('click', function() {
+        const input = this.closest('.input-wrapper').querySelector('input');
+        const icon = this.querySelector('i');
+        
+        if (input.type === 'password') {
+          input.type = 'text';
+          icon.classList.remove('fa-eye');
+          icon.classList.add('fa-eye-slash');
+        } else {
+          input.type = 'password';
+          icon.classList.remove('fa-eye-slash');
+          icon.classList.add('fa-eye');
+        }
+      });
+    });
+
+    // Show/Hide register form
+    document.getElementById('showRegister').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('registerForm').classList.remove('hidden');
+    });
+
+    document.getElementById('closeRegister').addEventListener('click', function() {
+      document.getElementById('registerForm').classList.add('hidden');
+    });
+
+    // Form submissions
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const profile = document.querySelector('.profile-option.active').dataset.profile;
+      
+      console.log('Connexion tentée:', { email, profile });
+      alert('Connexion en cours...\nEmail: ' + email + '\nProfil: ' + profile);
+    });
+
+    document.getElementById('registerForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      const password = formData.get('password');
+      const confirmPassword = formData.get('confirmPassword');
+      
+      if (password !== confirmPassword) {
+        alert('Les mots de passe ne correspondent pas !');
+        return;
+      }
+      
+      console.log('Inscription tentée:', Object.fromEntries(formData));
+      alert('Inscription en cours...\nEmail: ' + formData.get('email'));
+    });
+
+    // Input focus animations
+    document.querySelectorAll('input').forEach(input => {
+      input.addEventListener('focus', function() {
+        this.closest('.input-wrapper').style.transform = 'scale(1.02)';
+      });
+      
+      input.addEventListener('blur', function() {
+        this.closest('.input-wrapper').style.transform = 'scale(1)';
+      });
+    });
+  </script>
 </body>
-</html> 
+</html>
