@@ -200,15 +200,7 @@
     });
 
     // Form submissions
-    document.getElementById('loginForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-      const profile = document.querySelector('.profile-option.active').dataset.profile;
-      
-      console.log('Connexion tentée:', { email, profile });
-      alert('Connexion en cours...\nEmail: ' + email + '\nProfil: ' + profile);
-    });
+    
 
     document.getElementById('registerForm').addEventListener('submit', function(e) {
       e.preventDefault();
