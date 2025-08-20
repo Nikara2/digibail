@@ -200,22 +200,15 @@
     });
 
     // Form submissions
-    
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+  e.preventDefault(); // stop the form from adding ?email=... to URL
+  const formData = new FormData(this);
 
-    document.getElementById('registerForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const formData = new FormData(this);
-      const password = formData.get('password');
-      const confirmPassword = formData.get('confirmPassword');
-      
-      if (password !== confirmPassword) {
-        alert('Les mots de passe ne correspondent pas !');
-        return;
-      }
-      
-      console.log('Inscription tentée:', Object.fromEntries(formData));
-      alert('Inscription en cours...\nEmail: ' + formData.get('email'));
-    });
+  // For debugging, you can log if you want
+  console.log('Connexion tentée:', Object.fromEntries(formData));
+
+  // Redirect directly (no checks)
+});
 
     // Input focus animations
     document.querySelectorAll('input').forEach(input => {
