@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     window.location.href = './bailleur/bailleur.html';
                     break;
                 case 'admin':
-                    window.location.href = './bacokffice/backoffice.html';
+                    window.location.href = './backoffice/backoffice.html';
                     break;
                 default:
                     window.location.href = './locataire/locataire.html';
